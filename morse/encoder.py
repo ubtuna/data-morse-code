@@ -6,15 +6,16 @@ Functions:
   letters with a space.
 - encode_word(word): Encodes a single word into Morse code, separating letters with a space.
 """
-
 from morse.mapping import MORSE
+
 
 def encode(text):
     """
     Encodes the given text into Morse code.
     Words are separated by a pipe (|) and letters by a space.
     """
-    pass  # YOUR CODE HERE
+    words = text.split()
+    return "|".join(encode_word(word) for word in words)
 
 
 def encode_word(word):
@@ -22,7 +23,8 @@ def encode_word(word):
     Encodes a single word into Morse code.
     Letters are separated by a space.
     """
-    pass  # YOUR CODE HERE
+    codes = [MORSE[letter] for letter in word.upper() if letter.upper() in MORSE]
+    return " ".join(codes)
 
 
 if __name__ == "__main__":
